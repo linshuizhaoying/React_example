@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="build/react.js"></script>
+    <script src="build/JSXTransformer.js"></script>
+  </head>
+  <body>
+
+
+  </body>
+  
+<script type="text/jsx;harmony=true" language="JavaScript 1.7">
+
+ 
+
+var MyForm = React.createClass({
+  getInitialState: function () {
+    return {
+      helloTo: "Hello World!"
+    };
+  },
+  handleChange: function (event) {
+    this.setState({
+      helloTo: event.target.value.toUpperCase()
+    });
+  },
+  submitHandler: function (event) {
+    event.preventDefault();
+    alert(this.state.helloTo);
+  },
+  render: function () {
+    return <form onSubmit={this.submitHandler}>
+        <input 
+          type="text"
+          value={this.state.helloTo}
+          onChange={this.handleChange} />
+        <br />
+        <button type="submit">Speak</button>
+      </form>;
+  }
+});
+React.render(<MyForm/>, document.body);
+ 
+//]]> 
+</script>
+</html>

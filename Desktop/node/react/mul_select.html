@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="build/react.js"></script>
+    <script src="build/JSXTransformer.js"></script>
+  </head>
+  <body>
+
+
+  </body>
+  
+<script type="text/jsx;harmony=true" language="JavaScript 1.7">
+
+var MyForm = React.createClass({
+  getInitialState: function () {
+    return {
+      options: ["B"]
+    };
+  },
+  handleChange: function (event) {
+    var checked = [];
+    var sel = event.target;   
+    for(var i=0; i < sel.length; i++){
+      var option = sel.options[i];
+      if (option.selected){
+        checked.push(option.value);
+      }
+    }     
+    this.setState({
+      options: checked
+    });
+  },
+  submitHandler: function (event) {
+    event.preventDefault();
+    alert(this.state.options);
+  },
+  render: function () {
+    return <form onSubmit={this.submitHandler}>
+        <select multiple="true"
+            value={this.state.options}
+            onChange={this.handleChange}>
+          <option value="A">First Option</option>
+          <option value="B">Second Option</option>
+          <option value="C">Third Option</option>
+        </select>
+        <br />
+        <button type="submit">Speak</button>
+      </form>;
+  }
+});
+
+React.render(<MyForm/>, document.body);
+//]]> 
+</script>
+</html>
